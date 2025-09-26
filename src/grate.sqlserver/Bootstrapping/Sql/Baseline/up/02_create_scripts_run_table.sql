@@ -2,7 +2,7 @@ CREATE TABLE {{SchemaName}}.{{ScriptsRunTable}}(
     id bigint IDENTITY(1,1) NOT NULL,
     version_id BIGINT NULL,
     script_name nvarchar(255) NULL,
-    text_of_script text NULL,
+    text_of_script nvarchar(MAX) NULL,
     text_hash nvarchar(512) NULL,
     one_time_script bit NULL,
     entry_date datetime NULL,

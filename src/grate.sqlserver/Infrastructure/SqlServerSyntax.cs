@@ -17,7 +17,10 @@ public readonly struct SqlServerSyntax : ISyntax
 
     public string CurrentDatabase => "SELECT DB_NAME()";
     public string ListDatabases => "SELECT name FROM sys.databases";
-    public string CreateDatabase(string databaseName, string? _) => @$"CREATE DATABASE ""{databaseName}""";
+    public string CreateDatabase(string databaseName, string? _) => @$"
+            CREATE DATABASE ""{databaseName}""
+            COLLATE Latin1_General_100_CI_AS_KS_WS_SC_UTF8;
+        ";
     public string DropDatabase(string databaseName) => @$"USE master; 
                         IF EXISTS(SELECT * FROM sysdatabases WHERE [name] = '{databaseName}') 
                         BEGIN 
